@@ -119,12 +119,13 @@ class Kanye(AutoShardedBot):
                 )
             )
 
-        async def paginate(self: "Kanye.context", embeds: list, *args, **kwargs) -> None:
+        async def paginate(
+            self: "Kanye.context", embeds: list, *args, **kwargs
+        ) -> None:
             await paginator(
                 ctx=self,
                 embeds=embeds,
             )
-
 
     async def on_ready(self: "Kanye") -> None:
         await self.load_extension("jishaku")
@@ -135,6 +136,6 @@ class Kanye(AutoShardedBot):
                     try:
                         await self.load_extension(cog)
                         print(f"{cog} has been granted")
-                    except:
+                    except Exception as e:
+                        print(e)
                         pass
-
