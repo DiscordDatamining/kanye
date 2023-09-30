@@ -1,6 +1,6 @@
 import os
 from typing import Dict, List
-
+import cachetools
 import aiohttp
 import asyncpg
 import discord
@@ -8,6 +8,7 @@ import httpx
 import redis
 import requests
 import websockets
+from cachetools import LRUCache
 from helpers.paginator import paginator
 from aiohttp import ClientSession
 from discord import Embed
@@ -58,6 +59,10 @@ class Kanye(AutoShardedBot):
         Configuration
         """
         self.session: ClientSession = aiohttp.ClientSession
+        self.cache = LRUCache(
+            maxsize=1000,
+            ttl=300,
+        )
         self.redis = StrictRedis(
             host="localhost",
             port=6379,

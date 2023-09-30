@@ -7,6 +7,10 @@ class Auth:
         1147394216322924616,
     ]
 
+    class api:
+        cookies: str = ""
+        url: str = "https://instagram.com/{username}/?__a=1&__d=dis"
+
 
 class Color:
     normal: int = 0x2B2D31
