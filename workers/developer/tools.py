@@ -13,7 +13,7 @@ import asyncio
 from helpers.kanye import Kanye
 
 
-async def Developer(Cog):
+class Developer(Cog):
     """
     Developer Tasks
     """
