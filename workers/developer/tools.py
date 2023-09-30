@@ -1,9 +1,15 @@
-import discord
+from discord import Embed
+from workers.worker.manager import Worker
 from discord.ext.commands import (
     Cog,
-    command,
     group,
+    command,
+    Context,
+    has_permissions,
+    Command,
+    Group,
 )
+import asyncio
 from helpers.kanye import Kanye
 
 
@@ -15,26 +21,6 @@ async def Developer(Cog):
     def __init__(self: "Developer", bot: Kanye, *args, **kwargs) -> None:
         self.bot: Kanye = bot
 
-    @group(
-        name="globalhardban",
-        description="global ip bans a user from kanye.",
-        aliases=[
-            "ghb",
-            "gb",
-            "globalban",
-        ],
-    )
-    async def globalban(
-        self: "Developer", *, user: discord.User | discord.Member
-    ) -> None:
-        for x in self.bot.guilds:
-            for u in x.members:
-                if u.id == user.id:
-                    try:
-                        await u.ban()
-                    except Exception as e:
-                        pass
 
-
-async def setup(bot):
+async def setup(bot: Kanye):
     await bot.add_cog(Developer(bot))
