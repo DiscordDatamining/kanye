@@ -2,35 +2,24 @@ import selfcord
 from selfcord.ext.commands import Bot
 
 
-class Workers(Bot):
+class Workers(selfcord.Client):
     """
     Starts the worker
     """
 
     def __init__(self: "Workers", *args, **kwargs) -> None:
-        super().__init__(
-            command_prefix=";",
-        )
+        super().__init__()
 
     async def on_ready(self: "Workers") -> None:
         print(
             f"Logged in as {self.user} ({self.user.id})",
         )
 
-    async def on_message(self: "Workers", message) -> selfcord.Message:
-        if message.content == ";me":
-            user = await self.fetch_user_profile(message.author.id)
-            # await message.channel.send(user.)
-
     def __run__(self: "Workers") -> None:
         Workers().run(
-            token="MTE1NzEwODk2NDI4NzMyMDA2NA.GQusDD.tKPsQdIkYdpY7k49UxtiSfSzfeuqG8HEb-yqeY",
+            token="MTE1NzEwODk2NDI4NzMyMDA2NA.GL6rnF.V_pwwsEXop52UfSfOcuJ9QH7TP-Liz27ygLFOY",
             reconnect=True,
         )
-
-    """
-    Commands
-    """
 
 
 bot = Workers()
