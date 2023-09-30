@@ -1,5 +1,16 @@
 class Auth:
     token: str = (
-        "MTE1NjgyNzE2NDU3MDgyNDc4NA.GdpW7l.St8yCux22TZ9ZorKuMOoL6GQgkhNlra1c_AVd8"
+        "MTE1NjgyNzE2NDU3MDgyNDc4NA.GUzJob.ov7tCXaI4cWwdpIdFgnQ-crJh8JfjByKgg_Zxo"
     )
     prefix: str = ","
+    owner_ids: list = [
+        1147394216322924616,
+    ]
+
+
+class Color:
+    normal: int = 0x2B2D31
+    error: int = 0xFAA61A
+    approve: int = 0xACD8A7
+    warn: int = 0xFFA500
+    blue: int = 0x748CDC
