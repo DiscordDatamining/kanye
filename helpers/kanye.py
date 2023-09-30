@@ -61,7 +61,6 @@ class Kanye(AutoShardedBot):
         self.session: ClientSession = aiohttp.ClientSession
         self.cache = LRUCache(
             maxsize=1000,
-            ttl=300,
         )
         self.redis = StrictRedis(
             host="localhost",
