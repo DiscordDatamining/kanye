@@ -62,8 +62,8 @@ class Classic(Cog):
                         description=f"aliases: {', '.join(subcommand.aliases) if subcommand.aliases else 'no aliases provided'}"
                         + (
                             "\n"
-                            f"{subcommand.description or '*no description provided*'}\n\n"
-                            f"\n{subcommand.help or '*no help menu provided*'}"
+                            f"{subcommand.description or '*no description provided*'}\n"
+                            f"\n{f'*{subcommand.help}*' or '*no help menu provided*'}"
                         ),
                     )
                     embeds.append(embed)
@@ -76,8 +76,8 @@ class Classic(Cog):
                     description=f"aliases: {', '.join(command_or_group.aliases) if command_or_group.aliases else 'no aliases provided'}"
                     + (
                         "\n"
-                        f"{command_or_group.description or '*no description provided*'}\n\n"
-                        f"\n{command_or_group.help or '*no help menu provided*'}"
+                        f"{command_or_group.description or '*no description provided*'}\n"
+                        f"\n{f'*{command_or_group.help}*' or '*no help menu provided*'}"
                     ),
                 )
                 await ctx.send(embed=embed)
@@ -88,8 +88,8 @@ class Classic(Cog):
                 description=f"aliases: {', '.join(command_or_group.aliases) if command_or_group.aliases else 'no aliases provided'}"
                 + (
                     "\n"
-                    f"{command_or_group.description or '*no help menu provided*'}\n\n"
-                    f"\n{command_or_group.help or '*no help menu provided*'}"
+                    f"{command_or_group.description or '*no help menu provided*'}\n"
+                    f"\n{f'*{command_or_group.help}*' or '*no help menu provided*'}"
                 ),
             )
             await ctx.send(embed=embed)

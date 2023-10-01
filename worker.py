@@ -25,4 +25,4 @@ class Workers(selfcord.Client):
 bot = Workers()
 
 
-Workers().__run__()
+# Workers().__run__()

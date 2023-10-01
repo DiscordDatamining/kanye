@@ -10,6 +10,7 @@ class Auth:
     class api:
         cookies: str = ""
         url: str = "https://instagram.com/{username}/?__a=1&__d=dis"
+        media: str = "https://ig.gilbert.works/user/media/"
 
 
 class Color:

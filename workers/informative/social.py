@@ -101,6 +101,21 @@ class Socials(Cog):
                     .set_thumbnail(url=user["profile_pic_url_hd"])
                 )
 
+    @instagram.command(
+        name="posts",
+        description="Gets a user's recent post or posts.",
+        aliases=["p"],
+    )
+    async def posts(
+        self: "Socials",
+        ctx: Context,
+        username: str,
+    ) -> None:
+        """
+        fetch and display the most recent posts made by a user.
+        Amount -> This parameter specifies the number of posts to retrieve.
+        """
+
 
 async def setup(bot):
     await bot.add_cog(Socials(bot))
