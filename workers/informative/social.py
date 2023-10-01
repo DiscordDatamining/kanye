@@ -50,7 +50,7 @@ class Socials(Cog):
                         value=(f"{user['edge_owner_to_timeline_media']['count']:,}"),
                     )
                     .add_field(
-                        name="**Mutal**",
+                        name="**Mutual**",
                         value=(f"{user['edge_mutual_followed_by']['count']:,}"),
                     )
                     .add_field(
@@ -70,7 +70,7 @@ class Socials(Cog):
                 )
                 if user is None:
                     return await ctx.error(
-                        "That user doesnt exist!",
+                        "That **user** does not exist on instagram.",
                     )
                 self.bot.cache[f"instagram_user_info:{username}"] = user
                 await ctx.send(
@@ -86,7 +86,7 @@ class Socials(Cog):
                         value=(f"{user['edge_owner_to_timeline_media']['count']:,}"),
                     )
                     .add_field(
-                        name="**Mutal**",
+                        name="**Mutual**",
                         value=(f"{user['edge_mutual_followed_by']['count']:,}"),
                     )
                     .add_field(
