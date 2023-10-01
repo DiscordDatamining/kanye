@@ -44,9 +44,8 @@ async def paginator(ctx, embeds):
                     target_page = int(response.content)
                     if 0 <= target_page <= max_pages:
                         page = target_page
-                        await message.clear_reactions()
                     else:
-                        await ctx.warn(
+                        await ctx.error(
                             f"Invalid page number. Please enter a number between 0 and {max_pages}."
                         )
                 except ValueError:
@@ -58,6 +57,7 @@ async def paginator(ctx, embeds):
                 page = max_pages
 
             await message.edit(embed=embeds[page])
+            await message.remove_reaction(reaction, ctx.author)
 
         except asyncio.TimeoutError:
             break
