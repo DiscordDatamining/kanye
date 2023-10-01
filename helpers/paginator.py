@@ -13,7 +13,7 @@ async def paginator(ctx, embeds):
         "⬅️",
         "➡️",
         "⏩",
-        "🔍",
+        # "🔍",
     ]
 
     for reaction in reactions:
@@ -22,20 +22,25 @@ async def paginator(ctx, embeds):
     def check(reaction, user):
         return user == ctx.author and str(reaction.emoji) in reactions
 
+    goto_message = None
+
     while True:
         try:
             reaction, user = await ctx.bot.wait_for(
                 "reaction_add", timeout=60, check=check
             )
 
+            if goto_message:
+                await goto_message.delete()
+
             if str(reaction.emoji) == "➡️" and page < max_pages:
                 page += 1
             elif str(reaction.emoji) == "⬅️" and page > 0:
                 page -= 1
-            elif str(reaction.emoji) == "🔍":
-                await ctx.normal(
-                    f"🔎 {ctx.author.mention}, What page would you like to go to?"
-                )
+                # elif str(reaction.emoji) == "🔍":
+                #     goto_message = await ctx.normal(
+                #         f"🔎 {ctx.author.mention}, What page would you like to go to?"
+                #     )
                 response = await ctx.bot.wait_for(
                     "message", timeout=30, check=lambda m: m.author == ctx.author
                 )
@@ -45,7 +50,7 @@ async def paginator(ctx, embeds):
                     if 0 <= target_page <= max_pages:
                         page = target_page
                     else:
-                        await ctx.error(
+                        await ctx.warn(
                             f"Invalid page number. Please enter a number between 0 and {max_pages}."
                         )
                 except ValueError:
@@ -57,7 +62,6 @@ async def paginator(ctx, embeds):
                 page = max_pages
 
             await message.edit(embed=embeds[page])
-            await message.remove_reaction(reaction, ctx.author)
 
         except asyncio.TimeoutError:
             break

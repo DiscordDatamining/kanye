@@ -101,10 +101,10 @@ class Socials(Cog):
                     .set_thumbnail(url=user["profile_pic_url_hd"])
                 )
 
-    @instagram.command(
-        name="posts",
+    @command(
+        name="igposts",
         description="Gets a user's recent post or posts.",
-        aliases=["p"],
+        aliases=["igp"],
     )
     async def posts(
         self: "Socials",
